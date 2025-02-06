@@ -60,7 +60,7 @@ int main()
     cudaEventCreate(&stop);
     cudaEventRecord(start, 0);
     int BLOCK_DIM = 1024;
-    int num_block_x = n / BLOCK_DIM;
+    int num_block_x = (n+ BLOCK_DIM-1)/ BLOCK_DIM; //向上取整
     int num_block_y = 1;
     dim3 grid_dim(num_block_x, num_block_y, 1);
     dim3 block_dim(BLOCK_DIM, 1, 1);
